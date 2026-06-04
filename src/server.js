@@ -24,7 +24,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://front-end-shzi.vercel.app"
+      "https://front-end-shzi.vercel.app",
+      "https://front-end-shzi-e9u42yts3-handikacahyas-projects.vercel.app"
     ],
     credentials: true,
   })
