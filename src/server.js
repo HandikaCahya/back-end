@@ -24,7 +24,7 @@ app.use(
   cors({
     origin: function (origin, callback) {
       const allowed = [
-        /https:\/\/front-end-shzi.*\.vercel\.app$/,
+        /https:\/\/stroke-ai.*\.vercel\.app$/,  // ← ganti ini (nama baru)
         /http:\/\/localhost:\d+$/
       ];
       if (!origin || allowed.some(p => p.test(origin))) {
