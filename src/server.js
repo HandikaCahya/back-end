@@ -22,12 +22,20 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://front-end-shzi-6n6o3q97y-handikacahyas-projects.vercel.app",
-      "https://front-end-shzi-r03ee4xqn-handikacahyas-projects.vercel.app/login"
-    ],
+    origin: function (origin, callback) {
+      const allowed = [
+        /https:\/\/front-end-shzi.*\.vercel\.app$/,
+        /http:\/\/localhost:\d+$/
+      ];
+      if (!origin || allowed.some(p => p.test(origin))) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   })
 );
 
